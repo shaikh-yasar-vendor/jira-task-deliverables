@@ -2,6 +2,7 @@ from session import get_session
 import json
 from datetime import datetime
 from session import BASE_URL
+import pandas as pd
 response = get_session()
 
 # json_data = json.loads(response.text)
@@ -37,15 +38,18 @@ if response.status_code == 200:
         }
         final.append(data)
         # Print the extracted fields
-        print("Jira Number:", jira_number)
-        print("Description:", description)
-        print("Ticket Link:", ticket_link)
-        print("Status:", type(status))
-        print("Priority:", priority)
-        print("Created Date:", created_date)
-        print("Updated Date:", updated_date)
-        # print("Latest Comment:", latest_comment)
-        print("Reporter:", reporter)
-        print("\n")
+        # print("Jira Number:", jira_number)
+        # print("Description:", description)
+        # print("Ticket Link:", ticket_link)
+        # print("Status:", type(status))
+        # print("Priority:", priority)
+        # print("Created Date:", created_date)
+        # print("Updated Date:", updated_date)
+        # # print("Latest Comment:", latest_comment)
+        # print("Reporter:", reporter)
+        # print("\n")
 else:
     print("Error:", response.status_code)
+
+df = pd.DataFrame(final)
+print(df)
